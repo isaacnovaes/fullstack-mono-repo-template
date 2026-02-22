@@ -1,0 +1,20 @@
+{
+  "name": "bun-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:server": "bun --filter './packages/server' dev",
+    "dev:client": "bun --filter './packages/client' dev",
+    "dev": "bun run dev:server & bun run dev:client",
+    "build:server": "bun build packages/server/src/index.ts --outdir packages/server/dist --target bun",
+    "build:client": "bun --cwd packages/client build",
+    "build": "bun run build:server && bun run build:client"
+  },
+  "dependencies": {
+    "zod": "^4.3.6",
+    "hono": "^4.6.14"
+  }
+}
