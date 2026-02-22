@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": [
+    "**/dist/**",
+    "**/build/**",
+    "**/node_modules/**",
+    "**/.vite/**",
+    "**/coverage/**",
+    "**/eslint.config.js",
+    "packages/client/src/routeTree.gen.ts"
+  ]
+}

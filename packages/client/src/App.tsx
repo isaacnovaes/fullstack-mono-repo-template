@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import type { User } from "@monorepo/shared";
-import { route } from "@monorepo/server";
 import { hc } from "hono/client";
+import { useEffect, useState } from "react";
+
+import type { route } from "@monorepo/server";
+import type { User } from "@monorepo/shared";
 const client = hc<typeof route>("http://localhost:3000/");
 function App() {
   const [users, setUsers] = useState<User[]>([]);
@@ -16,8 +17,8 @@ function App() {
       .then((res) => {
         setUsers(res.data);
       })
-      .catch((err) => {
-        setError(err.message);
+      .catch((err: unknown) => {
+        setError(err instanceof Error ? err.message : "An unknown error occurred");
       })
       .finally(() => {
         setLoading(false);
@@ -34,6 +35,7 @@ function App() {
     <div className="container">
       <h1>Bun Monorepo - React Client</h1>
       <h2>Users from Hono Backend</h2>
+
       <ul>
         {users.map((user) => (
           <li key={user.id}>

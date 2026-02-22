@@ -56,6 +56,7 @@ bun run build:client
 ### @monorepo/server
 
 Hono backend server with TypeScript support. Includes:
+
 - REST API endpoints
 - CORS enabled
 - Shared type definitions from `@monorepo/shared`
@@ -63,6 +64,7 @@ Hono backend server with TypeScript support. Includes:
 ### @monorepo/client
 
 React application built with Vite. Features:
+
 - TypeScript support
 - Hot module replacement
 - Proxy to backend API

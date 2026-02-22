@@ -1,8 +1,9 @@
+import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
-import type { User, UsersResponse, UserResponse } from "@monorepo/shared";
-import { zValidator } from "@hono/zod-validator";
 import * as z from "zod";
+
+import type { User, UsersResponse, UserResponse } from "@monorepo/shared";
 
 const app = new Hono();
 
@@ -60,7 +61,7 @@ export const route = app
   );
 
 const port = 3000;
-console.log(`Server is running on http://localhost:${port}`);
+console.warn(`Server is running on http://localhost:${String(port)}`);
 
 export default {
   port,
