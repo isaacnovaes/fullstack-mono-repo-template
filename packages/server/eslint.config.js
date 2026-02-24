@@ -1,9 +1,9 @@
 // @ts-check
-import tseslint from "typescript-eslint";
 import security from "eslint-plugin-security";
+import { defineConfig } from "eslint/config";
 import rootConfig from "../../eslint.config.js";
 
-export default tseslint.config(...rootConfig, {
+export default defineConfig(...rootConfig, {
   files: ["**/*.ts"],
   plugins: {
     security,

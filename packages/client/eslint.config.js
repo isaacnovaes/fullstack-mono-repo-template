@@ -1,12 +1,12 @@
 // @ts-check
-import tseslint from "typescript-eslint";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
-import jsxA11y from "eslint-plugin-jsx-a11y";
+import { defineConfig } from "eslint/config";
 import rootConfig from "../../eslint.config.js";
 
-export default tseslint.config(...rootConfig, {
+export default defineConfig(...rootConfig, {
   files: ["**/*.{ts,tsx}"],
   plugins: {
     react,

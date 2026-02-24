@@ -6,7 +6,6 @@
     "**/node_modules/**",
     "**/.vite/**",
     "**/coverage/**",
-    "**/eslint.config.js",
     "packages/client/src/routeTree.gen.ts"
   ]
 }
