@@ -1,9 +1,14 @@
+import { createFileRoute } from "@tanstack/react-router";
 import { hc } from "hono/client";
 import { useEffect, useState } from "react";
 
 import type { route } from "@monorepo/server";
 import type { User } from "@monorepo/shared";
+
+export const Route = createFileRoute("/")({ component: App });
+
 const client = hc<typeof route>("http://localhost:3000/");
+
 function App() {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);

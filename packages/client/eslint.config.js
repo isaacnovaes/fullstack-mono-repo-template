@@ -1,4 +1,5 @@
 // @ts-check
+import pluginRouter from "@tanstack/eslint-plugin-router";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
@@ -6,7 +7,7 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import { defineConfig } from "eslint/config";
 import rootConfig from "../../eslint.config.js";
 
-export default defineConfig(...rootConfig, {
+export default defineConfig(...rootConfig, ...pluginRouter.configs["flat/recommended"], {
   files: ["**/*.{ts,tsx}"],
   plugins: {
     react,
@@ -92,6 +93,24 @@ export default defineConfig(...rootConfig, {
     "jsx-a11y/role-supports-aria-props": "error",
     "jsx-a11y/scope": "error",
     "jsx-a11y/tabindex-no-positive": "error",
+
+    "@typescript-eslint/only-throw-error": [
+      "error",
+      {
+        allow: [
+          {
+            from: "package",
+            package: "@tanstack/router-core",
+            name: "Redirect",
+          },
+          {
+            from: "package",
+            package: "@tanstack/router-core",
+            name: "NotFoundError",
+          },
+        ],
+      },
+    ],
 
     // Allow console in client (but warn)
     "no-console": "off",
