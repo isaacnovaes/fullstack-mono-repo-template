@@ -6,6 +6,7 @@ import rootConfig from "../../eslint.config.js";
 export default defineConfig(...rootConfig, {
   files: ["**/*.ts"],
   plugins: {
+    // @ts-expect-error - types ESLint 9 incompatibility with eslint-plugin-security
     security,
   },
   rules: {

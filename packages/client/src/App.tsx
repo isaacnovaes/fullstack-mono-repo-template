@@ -13,9 +13,10 @@ function App() {
     const abortController = new AbortController();
     client.api.users
       .$get({}, { init: { signal: abortController.signal } })
-      .then((res) => res.json())
+      .then(async (res) => res.json())
       .then((res) => {
         setUsers(res.data);
+        setError(null);
       })
       .catch((err: unknown) => {
         setError(err instanceof Error ? err.message : "An unknown error occurred");
@@ -24,12 +25,12 @@ function App() {
         setLoading(false);
       });
     return () => {
-      abortController.abort("Request aborted due to component unmount");
+      abortController.abort("Component unmounted, aborting fetch");
     };
   }, []);
 
-  if (loading) return <div className="container">Loading...</div>;
-  if (error) return <div className="container">Error: {error}</div>;
+  if (loading) return <p className="container">Loading...</p>;
+  if (error) return <p className="container">Error: {error}</p>;
 
   return (
     <div className="container">

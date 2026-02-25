@@ -3,7 +3,7 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import * as z from "zod";
 
-import type { User, UsersResponse, UserResponse } from "@monorepo/shared";
+import type { User, UserResponse, UsersResponse } from "@monorepo/shared";
 
 const app = new Hono();
 
@@ -26,6 +26,7 @@ export const route = app
       success: true,
       data: users,
     };
+
     return c.json(response);
   })
   .get("/api/users/:id", (c) => {
@@ -33,11 +34,12 @@ export const route = app
     const user = users.find((u) => u.id === id);
 
     if (!user) {
-      const response: UserResponse = {
+      const errorResponse: UserResponse = {
         success: false,
         error: "User not found",
       };
-      return c.json(response, 404);
+
+      return c.json(errorResponse, 404);
     }
 
     const response: UserResponse = {
