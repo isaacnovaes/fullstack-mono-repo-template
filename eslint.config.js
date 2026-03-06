@@ -114,7 +114,6 @@ export default defineConfig(
       "import/no-cycle": "warn",
       "import/no-dynamic-require": "warn",
       "import/no-self-import": "warn",
-      "import/group-exports": "warn",
       "import/no-duplicates": "warn",
       "import/order": [
         "error",
